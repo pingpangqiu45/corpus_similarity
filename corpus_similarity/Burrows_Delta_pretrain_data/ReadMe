@@ -1,0 +1,27 @@
+Burrow’s Delta (Cosine Delta)
+
+(Stefan Evert, Thomas Proisl, Fotis Jannidis, Isabella Reger, Steffen Pielström, Christof Schöch, Thorsten Vitt. Understanding and explaining Delta measures for authorship attribution. Digital Scholarship in the Humanities, Volume 32, Issue suppl_2, December 2017, Pages ii4–ii16, https://doi.org/10.1093/llc/fqx023)
+
+
+
+This Burrow's Delta is based the z-score standardization on top N words frequency. 
+
+For an input document(or corpus), f_i is the frequency of word(i); mean_i is the mean of f_i in a number of background documents (corpora) of the same language; std_i is the standard deviation of f_i. Then z_i(input) is the z-score standardization value for f_i in the input document.     
+
+z_i(input) = ( f_i - mean_i ) / std_i
+
+
+
+Mean_i and std_i are pre-trained and stored in json files based on backgound corpora for each language. Pre-training is conducted using 200 sub-corpora (50000 words size each) divided from background corpus for each language. Top 5K wordlist (offered in this package) is applied.  
+
+Format of the stored values:
+
+{ word_i: [mean_i, std_i], 
+  word_j: [mean_j, std_j],
+  .
+  .
+}
+
+
+Cosine similarity (Cosine Delta) can be calculated based on z-scores.
+
